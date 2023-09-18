@@ -1,10 +1,10 @@
 const express = require("express")
-const { config } = require("./config/index")
+const { config } = require("./src/config/index")
 
 const app = express()
 app.use(express.json())
 
-const authors = require("./routes/authors.js")
+const authors = require("./src/routes/authors.js")
 app.use("/authors", authors)
 
 app.listen(config.server.port, () => {
