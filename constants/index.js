@@ -20,7 +20,7 @@ const writers = [
         ]
     },
     {
-        id: 1,
+        id: 2,
         name: "Brandon",
         username: "Sanderson",
         birthYear: "19/12/1975",
@@ -41,4 +41,6 @@ const writers = [
     },
 ]
 
-export default writers
+module.exports = {
+    writers
+} 
