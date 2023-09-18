@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router()
-const writers = require("../constants/index")
+const { allWriters, addWriter } = require("../controllers/authorsController.js")
 
-router.get("/", (req, res) => {
-    res.status(200).json(writers)
-})
+router.get("/", allWriters)
+    .post("/", addWriter)
 
 module.exports = router
