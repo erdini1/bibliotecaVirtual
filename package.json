@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"description": "Ejercicio de una Biblioteca virtual de Acamica",
 	"main": "index.js",
-	"type": "module",
 	"scripts": {
 		"start": "node index.js",
 		"dev": "nodemon index.js",
