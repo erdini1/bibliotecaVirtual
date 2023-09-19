@@ -6,6 +6,9 @@ const app = ExpressConfig()
 const authors = require("./src/routes/authors.js")
 app.use("/authors", authors)
 
+const books = require("./src/routes/books.js")
+app.use("/books", books)
+
 app.listen(config.server.port, () => {
     console.log(`Server running on port ${config.server.port}`)
 })
