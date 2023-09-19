@@ -1,4 +1,4 @@
-const { writers } = require("../constants/index")
+let { writers } = require("../constants/index")
 
 exports.allWriters = (req, res) => {
     return res.status(200).json(writers)
@@ -19,4 +19,11 @@ exports.addWriter = (req, res) => {
 exports.oneWriter = (req, res) => {
     const author = req.author
     return res.status(200).json(author)
+}
+
+exports.deleteWriter = (req, res) => {
+    const author = req.author
+    const authorIndex = writers.findIndex(element => element.id == author.id);
+    writers.splice(authorIndex, 1)
+    return res.status(200).json({ msg: "Writer deleted succesfully" })
 }

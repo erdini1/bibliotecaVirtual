@@ -1,11 +1,15 @@
 const express = require("express");
 const router = express.Router()
-const { allWriters, addWriter, oneWriter } = require("../controllers/authorsController.js")
-const { validateExistingWriter, validateWriterData, validateWriterId } = require("../middlewares/authorsMiddleware.js")
+const { allWriters, addWriter, oneWriter, deleteWriter } = require("../controllers/authorsController.js")
+const { validateWriterData, validateWriterId } = require("../middlewares/authorsMiddleware.js")
 
-router.get("/", allWriters)
-    .post("/", validateExistingWriter, validateWriterData, addWriter)
+router
+    .get("/", allWriters)
+    .post("/", validateWriterData, addWriter)
 
-router.get("/:id", validateWriterId, oneWriter)
+router
+    .get("/:id", validateWriterId, oneWriter)
+    .delete("/:id", validateWriterId, deleteWriter)
+
 
 module.exports = router

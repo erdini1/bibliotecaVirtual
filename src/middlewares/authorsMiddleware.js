@@ -1,9 +1,4 @@
-const { writers } = require("../constants")
-
-function validateExistingWriter(req, res, next) {
-    // console.log("validateExistingWriter")
-    next()
-}
+let { writers } = require("../constants/index")
 
 function validateWriterData(req, res, next) {
     const { name, username, birthYear } = req.body
@@ -24,7 +19,6 @@ function validateWriterId(req, res, next) {
 }
 
 module.exports = {
-    validateExistingWriter,
     validateWriterData,
     validateWriterId
 }

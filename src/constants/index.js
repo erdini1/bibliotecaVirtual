@@ -1,4 +1,4 @@
-const writers = [
+let writers = [
     {
         id: 0,
         name: "Jorge Luis",
