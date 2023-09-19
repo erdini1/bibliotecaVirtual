@@ -3,7 +3,7 @@ let { writers } = require("../constants/index")
 function validateWriterData(req, res, next) {
     const { name, username, birthYear } = req.body
     if ([name, username, birthYear].includes("")) {
-        res.status(400).json({ error: "The fields cannot be empty" })
+        return res.status(400).json({ error: "The fields cannot be empty" })
     }
     next()
 }

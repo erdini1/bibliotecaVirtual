@@ -28,3 +28,16 @@ exports.deleteWriter = (req, res) => {
     writers.splice(authorIndex, 1)
     return res.status(200).json({ msg: "Writer deleted succesfully" })
 }
+
+exports.updateWriter = (req, res) => {
+    const id = +req.params.id
+    const { name, username, birthYear } = req.body
+    writers.forEach(element => (
+        element.id === id ? (
+            element.name = name || element.name,
+            element.username = username || element.username,
+            element.birthYear = birthYear || element.birthYear
+        ) : ""
+    ))
+    return res.status(200).json({ msg: "Writer modified succesfully" })
+}
