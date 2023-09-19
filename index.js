@@ -1,8 +1,7 @@
-const express = require("express")
-const { config } = require("./src/config/index")
+const ExpressConfig = require("./src/config/express.config.js")
+const { config } = require("./src/config/env.config.js")
 
-const app = express()
-app.use(express.json())
+const app = ExpressConfig()
 
 const authors = require("./src/routes/authors.js")
 app.use("/authors", authors)

@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router()
 const { allWriters, addWriter } = require("../controllers/authorsController.js")
-const { validateExistingWriter } = require("../middlewares/authorsMiddleware.js")
+const { validateExistingWriter, validateWriterData } = require("../middlewares/authorsMiddleware.js")
 
 router.get("/", allWriters)
-    .post("/", validateExistingWriter, addWriter)
+    .post("/", validateExistingWriter, validateWriterData, addWriter)
 
 module.exports = router
