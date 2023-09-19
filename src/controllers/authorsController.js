@@ -6,8 +6,9 @@ exports.allWriters = (req, res) => {
 
 exports.addWriter = (req, res) => {
     const { name, username, birthYear } = req.body
+    const lastAuthorID = writers[writers.length - 1].id
     writers.push({
-        id: writers.length == 0 ? 0 : writers.length,
+        id: lastAuthorID + 1,
         name,
         username,
         birthYear,
