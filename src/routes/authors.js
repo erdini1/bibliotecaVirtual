@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router()
-const { allWriters, addWriter, oneWriter, deleteWriter, updateWriter } = require("../controllers/authorsController.js")
-const { validateWriterData, validateWriterId } = require("../middlewares/authorsMiddleware.js")
+const { allWriters, addWriter, oneWriter, deleteWriter, updateWriter } = require("../controllers/authors.js")
+const { validateWriterData, validateWriterId } = require("../middlewares/authors.js")
 
 router
     .get("/", allWriters)

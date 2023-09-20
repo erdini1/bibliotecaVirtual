@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
 
-const { allBooks, addBook } = require("../controllers/booksController.js")
-const { validateWriterId } = require("../middlewares/authorsMiddleware.js")
-const { validateBookData } = require("../middlewares/booksMiddleware.js")
+const { allBooks, addBook } = require("../controllers/books.js")
+const { validateWriterId } = require("../middlewares/authors.js")
+const { validateBookData } = require("../middlewares/books.js")
 
 router
     .get("/:id/books", validateWriterId, allBooks)
