@@ -1,3 +1,5 @@
+let { writers } = require("../constants")
+
 exports.validateBookData = (req, res, next) => {
     const { title, description, publicationYear } = req.body
     // ningun campo puede faltar
@@ -8,5 +10,17 @@ exports.validateBookData = (req, res, next) => {
     if ([title, description, publicationYear].some(field => field === "")) {
         return res.status(400).json({ error: "The fields cannot be empty" })
     }
+    next()
+}
+
+exports.validateBookId = (req, res, next) => {
+    const idLibro = +req.params.idLibro
+    const author = req.author
+    const book = author.books.find(element => element.id === idLibro)
+    if (!book) {
+        return res.status(404).json({ error: "Book doesn't exist" })
+    }
+
+    req.book = book
     next()
 }

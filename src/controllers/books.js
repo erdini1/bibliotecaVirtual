@@ -22,3 +22,8 @@ exports.addBook = (req, res) => {
 
     return res.status(201).json({ msg: "Book added" })
 }
+
+exports.oneBook = (req, res) => {
+    const book = req.book
+    return res.status(200).json(book)
+}
