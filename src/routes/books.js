@@ -9,4 +9,6 @@ router
     .get("/:id/books", validateWriterId, allBooks)
     .post("/:id/books", validateWriterId, validateBookData, addBook)
 
+// router
+//     .get("/:id/books/:idLibro", validateWriterId, )
 module.exports = router
