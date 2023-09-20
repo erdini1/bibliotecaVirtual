@@ -20,6 +20,10 @@ exports.validateWriterId = (req, res, next) => {
     if (!author) {
         return res.status(404).json({ error: "Writer doesn't exist" })
     }
+    const indexAuthor = writers.findIndex(element => element.id === author.id)
+
     req.author = author
+    req.indexAuthor = indexAuthor
+
     next()
 }

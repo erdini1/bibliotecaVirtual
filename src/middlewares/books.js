@@ -20,7 +20,10 @@ exports.validateBookId = (req, res, next) => {
     if (!book) {
         return res.status(404).json({ error: "Book doesn't exist" })
     }
+    const indexBook = author.books.findIndex(element => element.id === book.id)
 
     req.book = book
+    req.indexBook = indexBook
+
     next()
 }

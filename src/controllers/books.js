@@ -6,10 +6,9 @@ exports.allBooks = (req, res) => {
 }
 
 exports.addBook = (req, res) => {
-    const author = req.author
+    const indexAuthor = req.indexAuthor
     const { title, description, publicationYear } = req.body
 
-    const indexAuthor = writers.findIndex(element => element.id === author.id)
     const booksOfAuthor = writers[indexAuthor].books
     const lastIndexBook = booksOfAuthor.length > 0 ? booksOfAuthor[booksOfAuthor.length - 1].id : -1
 
@@ -29,10 +28,8 @@ exports.oneBook = (req, res) => {
 }
 
 exports.deleteBook = (req, res) => {
-    const author = req.author
-    const book = req.book
-    const indexAuthor = writers.findIndex(element => element.id === author.id)
-    const indexBook = author.books.findIndex(element => element.id === book.id)
+    const indexAuthor = req.indexAuthor
+    const indexBook = req.indexBook
 
     writers[indexAuthor].books.splice(indexBook, 1)
     return res.status(200).json({ msg: "Book deleted succesfully" })

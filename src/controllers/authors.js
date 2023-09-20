@@ -23,9 +23,8 @@ exports.oneWriter = (req, res) => {
 }
 
 exports.deleteWriter = (req, res) => {
-    const author = req.author
-    const authorIndex = writers.findIndex(element => element.id == author.id);
-    writers.splice(authorIndex, 1)
+    const indexAuthor = req.indexAuthor
+    writers.splice(indexAuthor, 1)
     return res.status(200).json({ msg: "Writer deleted succesfully" })
 }
 
