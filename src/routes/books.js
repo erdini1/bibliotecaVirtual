@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
-const { allBooks, addBook, oneBook } = require("../controllers/books.js")
+const { allBooks, addBook, oneBook, updateBook, deleteBook } = require("../controllers/books.js")
 const { validateWriterId } = require("../middlewares/authors.js")
 const { validateBookData, validateBookId } = require("../middlewares/books.js")
 
@@ -11,4 +11,7 @@ router
 
 router
     .get("/:id/books/:idLibro", validateWriterId, validateBookId, oneBook)
+    .delete("/:id/books/:idLibro", validateWriterId, validateBookId, deleteBook)
+    .put("/:id/books/:idLibro", validateWriterId, validateBookId, validateBookData, updateBook)
+
 module.exports = router

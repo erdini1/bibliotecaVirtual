@@ -27,3 +27,17 @@ exports.oneBook = (req, res) => {
     const book = req.book
     return res.status(200).json(book)
 }
+
+exports.deleteBook = (req, res) => {
+    const author = req.author
+    const book = req.book
+    const indexAuthor = writers.findIndex(element => element.id === author.id)
+    const indexBook = author.books.findIndex(element => element.id === book.id)
+
+    writers[indexAuthor].books.splice(indexBook, 1)
+    return res.status(200).json({ msg: "Book deleted succesfully" })
+}
+
+exports.updateBook = (req, res) => {
+    return res.status(200).json({ msg: "Book modified succesfully" })
+}
