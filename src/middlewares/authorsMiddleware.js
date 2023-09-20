@@ -1,6 +1,6 @@
 let { writers } = require("../constants/index")
 
-function validateWriterData(req, res, next) {
+exports.validateWriterData = (req, res, next) => {
     const { name, username, birthYear } = req.body
     if ([name, username, birthYear].includes("")) {
         return res.status(400).json({ error: "The fields cannot be empty" })
@@ -8,7 +8,7 @@ function validateWriterData(req, res, next) {
     next()
 }
 
-function validateWriterId(req, res, next) {
+exports.validateWriterId = (req, res, next) => {
     const id = +req.params.id
     const author = writers.find(element => element.id === id)
     if (!author) {
@@ -18,7 +18,7 @@ function validateWriterId(req, res, next) {
     next()
 }
 
-module.exports = {
-    validateWriterData,
-    validateWriterId
-}
+// module.exports = {
+//     validateWriterData,
+//     validateWriterId
+// }
