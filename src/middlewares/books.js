@@ -2,7 +2,7 @@ let { writers } = require("../constants")
 
 exports.validateBookData = (req, res, next) => {
     const { title, description, publicationYear } = req.body
-    // ningun campo puede faltar
+    // Ningun campo puede faltar
     if (req.method === "POST" && (!title || !description || !publicationYear)) {
         return res.status(400).json({ error: "The fields cannot be empty" })
     }
@@ -20,6 +20,7 @@ exports.validateBookId = (req, res, next) => {
     if (!book) {
         return res.status(404).json({ error: "Book doesn't exist" })
     }
+    //Busco el indice para luego poder acceder a tratarlo
     const indexBook = author.books.findIndex(element => element.id === book.id)
 
     req.book = book

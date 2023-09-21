@@ -36,5 +36,18 @@ exports.deleteBook = (req, res) => {
 }
 
 exports.updateBook = (req, res) => {
+    const indexAuthor = req.indexAuthor
+    const book = req.book
+    const { title, description, publicationYear } = req.body
+
+    writers[indexAuthor].books.forEach(element => (
+        element.id === book.id ? (
+            element.title = title || element.title,
+            element.description = description || element.description,
+            element.publicationYear = publicationYear || element.publicationYear
+        ) : ""
+    ))
+
+
     return res.status(200).json({ msg: "Book modified succesfully" })
 }
